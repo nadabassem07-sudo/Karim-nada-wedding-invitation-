@@ -817,6 +817,16 @@
 
   /* — Parallax wrapper — */
   .parallax-wrap { transition: transform 0.05s linear; }
+
+  /* — Countdown: prevent day/hour tiles from overflowing narrow phones —
+     4 tiles + 3 colons at the base sizes need ~400px; on sub-480px screens
+     that pushes the first/last tile off-screen since the row is nowrap. */
+  @media (max-width: 480px) {
+    .cdown-row  { gap: clamp(3px, 1.8vw, 10px); }
+    .cdown-unit { min-width: 46px; padding: 0.6rem 0.15rem 0.5rem; }
+    .cdown-num  { font-size: clamp(1.4rem, 7vw, 2.1rem); }
+    .cdown-colon{ font-size: clamp(0.9rem, 3.5vw, 1.4rem); }
+  }
 </style>
 </head>
 <body>
